@@ -10,14 +10,25 @@
 
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
+import {SafeAreaView, StyleSheet} from 'react-native';
 import {Authorization} from './src/modules/authorization';
+import {COLORS} from './src/styles/colors';
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Authorization />
+      <SafeAreaView style={styles.container}>
+        <Authorization />
+      </SafeAreaView>
     </NavigationContainer>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    background: COLORS.BACKGROUND,
+  },
+});
 
 export default App;

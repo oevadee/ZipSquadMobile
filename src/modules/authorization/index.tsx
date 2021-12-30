@@ -3,6 +3,7 @@ import {NoAuthNavigation} from '../../navigation/no-auth';
 import {SafeAreaView, StyleSheet} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationRoutes} from '../../navigation/routes';
+import {COLORS} from '../../styles/colors';
 
 const Stack = createNativeStackNavigator<any>();
 
@@ -36,5 +37,6 @@ export const Authorization = (): ReactElement => {
 const styles = StyleSheet.create<any>({
   container: {
     flex: 1,
+    background: COLORS.BACKGROUND,
   },
 });
