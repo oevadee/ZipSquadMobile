@@ -19,7 +19,7 @@ interface IProps {
   containerStyle?: ViewStyle;
 }
 
-export const SaveAreaNoAuth = (props: IProps): ReactElement => {
+export const SafeAreaNoAuth = (props: IProps): ReactElement => {
   const {
     children,
     automaticallyAdjustContentInsets = true,

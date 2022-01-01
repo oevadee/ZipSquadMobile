@@ -4,14 +4,14 @@ import {useNavigation} from '@react-navigation/core';
 import {NavigationRoutes} from '../../../navigation/routes';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {COLORS} from '../../../styles/colors';
-import {SaveAreaNoAuth} from '../../../components/safe-area-no-auth';
+import {SafeAreaNoAuth} from '../../../components/safe-area-no-auth';
 import {StyledButton} from '../../../components/styled-button';
 
 export const FirstScreen = (): ReactElement => {
   const navigation = useNavigation<StackNavigationProp<any>>();
 
   return (
-    <SaveAreaNoAuth containerStyle={styles.container}>
+    <SafeAreaNoAuth containerStyle={styles.container}>
       <StyledButton
         styleButton={[styles.button, styles.signInButton]}
         onPress={(): void =>
@@ -32,7 +32,7 @@ export const FirstScreen = (): ReactElement => {
         }>
         Sign Up
       </StyledButton>
-    </SaveAreaNoAuth>
+    </SafeAreaNoAuth>
   );
 };
 
