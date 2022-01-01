@@ -19,29 +19,23 @@ interface IProps {
   containerStyle?: ViewStyle;
 }
 
-export const SafeAreaNoAuth = (props: IProps): ReactElement => {
-  const {
-    children,
-    automaticallyAdjustContentInsets = true,
-    logoStyle,
-    containerStyle,
-  } = props;
-  return (
-    <SafeAreaView style={styles.container}>
-      <KeyboardAware
-        contentContainerStyle={[styles.wrapper, containerStyle]}
-        automaticallyAdjustContentInsets={automaticallyAdjustContentInsets}>
-        <View style={[styles.logoWrapper, logoStyle]}>
-          <Image
-            source={require('../../assets/icon.png')}
-            style={styles.logo}
-          />
-        </View>
-        {children}
-      </KeyboardAware>
-    </SafeAreaView>
-  );
-};
+export const SafeAreaNoAuth = ({
+  children,
+  automaticallyAdjustContentInsets = true,
+  logoStyle,
+  containerStyle,
+}: IProps): ReactElement => (
+  <SafeAreaView style={styles.container}>
+    <KeyboardAware
+      contentContainerStyle={[styles.wrapper, containerStyle]}
+      automaticallyAdjustContentInsets={automaticallyAdjustContentInsets}>
+      <View style={[styles.logoWrapper, logoStyle]}>
+        <Image source={require('../../assets/icon.png')} style={styles.logo} />
+      </View>
+      {children}
+    </KeyboardAware>
+  </SafeAreaView>
+);
 
 interface Style {
   container: ViewStyle;

@@ -1,16 +1,15 @@
 import React, {ReactElement, ReactNode} from 'react';
 import {TextStyle, StyleSheet, TextProps} from 'react-native';
-import {StyledText} from '../styled-text';
+import {StyledText} from 'components/styled-text';
 
 type IProps = {
   children: ReactNode;
   style?: TextStyle;
 } & TextProps;
 
-export const Description = (props: IProps): ReactElement => {
-  const {children, style} = props;
-  return <StyledText style={[styles.title, style]}>{children}</StyledText>;
-};
+export const Description = ({children, style}: IProps): ReactElement => (
+  <StyledText style={[styles.title, style]}>{children}</StyledText>
+);
 
 interface Style {
   title: TextStyle;

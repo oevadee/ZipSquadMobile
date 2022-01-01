@@ -17,20 +17,19 @@ export const NoAuthNavigation = (): ReactElement => {
         component={FirstScreen}
         options={{
           headerShown: false,
-          headerStyle: {
-            backgroundColor: COLORS.BACKGROUND,
-          },
-          contentStyle: {
-            backgroundColor: COLORS.BACKGROUND,
-          },
-          headerTransparent: true,
         }}
       />
       <NoAuthStack.Screen
         name={NavigationRoutes.SIGN_IN}
         component={SignInScreen}
         options={{
-          headerShown: false,
+          gestureEnabled: false,
+          headerStyle: {
+            backgroundColor: COLORS.BACKGROUND,
+          },
+          headerTitleStyle: {
+            color: COLORS.WHITE,
+          },
         }}
       />
       <NoAuthStack.Screen

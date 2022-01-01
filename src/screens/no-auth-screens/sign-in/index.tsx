@@ -3,7 +3,7 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import React, {useState} from 'react';
 import {StyleSheet, TouchableOpacity, View, ViewStyle} from 'react-native';
 import {Description} from 'components/description';
-import {SafeAreaNoAuth} from 'components/safe-area-no-auth';
+import {SafeAreaNoAuth} from 'containers/safe-area-no-auth';
 import {StyledButton} from 'components/styled-button';
 import {StyledText} from 'components/styled-text';
 import {Title} from 'components/title';

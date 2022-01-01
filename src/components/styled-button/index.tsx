@@ -30,32 +30,28 @@ const ButtonIcon = (props: IProps & ImageProps): ReactElement => {
   return <Image source={source} style={[styles.icon, styleIcon]} />;
 };
 
-export const StyledButton = (props: IProps): ReactElement => {
-  const {
-    onPress,
-    children,
-    disabled,
-    source = 0,
-    styleIcon,
-    styleButton,
-    styleText,
-    icon = false,
-    isBlocked = false,
-  } = props;
-
-  return (
-    <TouchableOpacity
-      onPress={!isBlocked ? onPress : (): void => {}}
-      style={[
-        styles.button,
-        styleButton,
-        (disabled || isBlocked) && styles.buttonDisabled,
-      ]}>
-      {icon ? <ButtonIcon source={source} styleIcon={styleIcon} /> : null}
-      <Text style={[styles.text, styleText]}>{children}</Text>
-    </TouchableOpacity>
-  );
-};
+export const StyledButton = ({
+  onPress,
+  children,
+  disabled,
+  source = 0,
+  styleIcon,
+  styleButton,
+  styleText,
+  icon = false,
+  isBlocked = false,
+}: IProps): ReactElement => (
+  <TouchableOpacity
+    onPress={!isBlocked ? onPress : (): void => {}}
+    style={[
+      styles.button,
+      styleButton,
+      (disabled || isBlocked) && styles.buttonDisabled,
+    ]}>
+    {icon ? <ButtonIcon source={source} styleIcon={styleIcon} /> : null}
+    <Text style={[styles.text, styleText]}>{children}</Text>
+  </TouchableOpacity>
+);
 
 interface Style {
   button: ViewStyle;

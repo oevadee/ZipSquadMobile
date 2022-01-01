@@ -6,12 +6,8 @@ type Props = {
   children: ReactNode;
 } & ScrollViewProps;
 
-export const KeyboardAware = (props: Props): ReactElement => {
-  const {children} = props;
-
-  return (
-    <KeyboardAwareScrollView bounces={false} {...props}>
-      {children}
-    </KeyboardAwareScrollView>
-  );
-};
+export const KeyboardAware = ({children, ...props}: Props): ReactElement => (
+  <KeyboardAwareScrollView bounces={false} {...props}>
+    {children}
+  </KeyboardAwareScrollView>
+);

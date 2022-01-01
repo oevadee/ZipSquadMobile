@@ -6,14 +6,15 @@ interface IProps extends TextProps {
   children: ReactNode;
 }
 
-export const StyledText = (props: IProps): ReactElement => {
-  const {children, style} = props;
-  return (
-    <Text {...props} style={[styles.text, style]}>
-      {children}
-    </Text>
-  );
-};
+export const StyledText = ({
+  children,
+  style,
+  ...props
+}: IProps): ReactElement => (
+  <Text {...props} style={[styles.text, style]}>
+    {children}
+  </Text>
+);
 
 interface Style {
   text: TextStyle;
