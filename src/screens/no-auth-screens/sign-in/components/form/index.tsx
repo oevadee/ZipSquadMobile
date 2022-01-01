@@ -7,10 +7,10 @@ import {
   ViewStyle,
 } from 'react-native';
 import {Label} from 'components/Label';
-import {Input} from 'components/Input';
+import {Input} from 'components/input';
 import {StyledText} from 'components/styled-text';
 import {COLORS} from 'styles/colors';
-import {Checkbox} from 'components/Checkbox';
+import {Checkbox} from 'components/check-box';
 import {PasswordInput} from 'components/PasswordInput';
 import {useNavigation} from '@react-navigation/native';
 import {NavigationRoutes} from 'navigation/routes';
