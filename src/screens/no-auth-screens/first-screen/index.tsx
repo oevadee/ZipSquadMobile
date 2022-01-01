@@ -5,28 +5,33 @@ import {NavigationRoutes} from '../../../navigation/routes';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {COLORS} from '../../../styles/colors';
 import {SaveAreaNoAuth} from '../../../components/safe-area-no-auth';
+import {StyledButton} from '../../../components/styled-button';
 
 export const FirstScreen = (): ReactElement => {
   const navigation = useNavigation<StackNavigationProp<any>>();
 
   return (
     <SaveAreaNoAuth containerStyle={styles.container}>
-      <Button
-        title="Sign In"
+      <StyledButton
+        styleButton={[styles.button, styles.signInButton]}
         onPress={(): void =>
           navigation.navigate({
             name: NavigationRoutes.SIGN_IN,
             key: NavigationRoutes.SIGN_IN,
           })
-        }></Button>
-      <Button
-        title="Sign Up"
+        }>
+        Sign In
+      </StyledButton>
+      <StyledButton
+        styleButton={[styles.button, styles.signInButton]}
         onPress={(): void =>
           navigation.navigate({
             name: NavigationRoutes.SIGN_UP,
             key: NavigationRoutes.SIGN_UP,
           })
-        }></Button>
+        }>
+        Sign Up
+      </StyledButton>
     </SaveAreaNoAuth>
   );
 };

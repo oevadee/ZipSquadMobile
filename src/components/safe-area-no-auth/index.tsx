@@ -45,22 +45,14 @@ export const SaveAreaNoAuth = (props: IProps): ReactElement => {
 
 interface Style {
   container: ViewStyle;
-  logoWrapper: ViewStyle;
   wrapper: ViewStyle;
+  logoWrapper: ViewStyle;
   logo: ImageStyle;
 }
 
 const {width, height} = Dimensions.get('window');
 
 const styles = StyleSheet.create<Style>({
-  logoWrapper: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  logo: {
-    marginBottom: 45,
-    justifyContent: 'flex-start',
-  },
   container: {
     flex: 1,
     backgroundColor: COLORS.BACKGROUND,
@@ -68,8 +60,16 @@ const styles = StyleSheet.create<Style>({
     paddingVertical: Platform.OS !== 'ios' ? height * 0.05 : 'auto',
   },
   wrapper: {
-    flexGrow: 1,
+    justifyContent: 'space-between',
     paddingHorizontal: width * 0.1,
     paddingVertical: Platform.OS === 'ios' ? height * 0.05 : 'auto',
+  },
+  logoWrapper: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  logo: {
+    marginBottom: 45,
+    justifyContent: 'flex-start',
   },
 });
