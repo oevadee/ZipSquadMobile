@@ -105,7 +105,7 @@ const styles = StyleSheet.create<Style>({
         borderColor: COLORS.PRIMARY,
     },
     icon: {
-        tintColor: COLORS.GRAY,
+        tintColor: COLORS.WHITE,
         width: 25,
         height: 25,
     },

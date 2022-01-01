@@ -21,6 +21,7 @@ import { Spinner } from 'components/spinner';
 const INPUT_NAME = {
     email: 'email',
     password: 'password',
+    repeatPassword: 'repeated-password',
 };
 
 export const SignUpScreen = () => {
@@ -34,7 +35,6 @@ export const SignUpScreen = () => {
         formState: { errors },
     } = useForm<SignUpInputName>({
         resolver: yupResolver(signUpSchema(t, INPUT_NAME)),
-        mode: 'onChange',
     });
     const navigation = useNavigation<StackNavigationProp<any>>();
 

@@ -56,7 +56,7 @@ export const SignUpForm = ({
                     control={control}
                     name={inputName.password}
                     render={({ field: { onChange, onBlur, value } }) => (
-                        <Input
+                        <PasswordInput
                             onChangeText={(value) => onChange(value)}
                             value={value}
                             onBlur={onBlur}
@@ -71,11 +71,11 @@ export const SignUpForm = ({
                     control={control}
                     name={inputName.repeatPassword}
                     render={({ field: { onChange, onBlur, value } }) => (
-                        <Input
+                        <PasswordInput
                             onChangeText={(value) => onChange(value)}
                             value={value}
                             onBlur={onBlur}
-                            error={errors.password}
+                            error={errors.repeatPassword}
                         />
                     )}
                 />

@@ -56,7 +56,7 @@ export const SignInForm = ({
                     control={control}
                     name={inputName.password}
                     render={({ field: { onChange, onBlur, value } }) => (
-                        <Input
+                        <PasswordInput
                             onChangeText={(value) => onChange(value)}
                             value={value}
                             onBlur={onBlur}

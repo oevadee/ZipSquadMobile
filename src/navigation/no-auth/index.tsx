@@ -12,9 +12,7 @@ const NoAuthStack = createNativeStackNavigator<any>();
 
 export const NoAuthNavigation = (): ReactElement => {
     return (
-        <NoAuthStack.Navigator
-            initialRouteName={NavigationRoutes.FIRST_SCREEN}
-            screenOptions={{ gestureEnabled: false }}>
+        <NoAuthStack.Navigator initialRouteName={NavigationRoutes.FIRST_SCREEN}>
             <NoAuthStack.Screen
                 name={NavigationRoutes.FIRST_SCREEN}
                 component={FirstScreen}
