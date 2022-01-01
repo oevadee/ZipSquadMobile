@@ -6,6 +6,7 @@ import { NavigationRoutes } from 'navigation/routes';
 import { FirstScreen } from 'screens/no-auth-screens/first-screen';
 import { SignInScreen } from 'screens/no-auth-screens/sign-in';
 import { COLORS } from 'styles/colors';
+import { SignUpScreen } from 'screens/no-auth-screens/sign-up';
 
 const NoAuthStack = createNativeStackNavigator<any>();
 
@@ -13,8 +14,7 @@ export const NoAuthNavigation = (): ReactElement => {
     return (
         <NoAuthStack.Navigator
             initialRouteName={NavigationRoutes.FIRST_SCREEN}
-            screenOptions={{ gestureEnabled: false }}
-        >
+            screenOptions={{ gestureEnabled: false }}>
             <NoAuthStack.Screen
                 name={NavigationRoutes.FIRST_SCREEN}
                 component={FirstScreen}
@@ -36,9 +36,14 @@ export const NoAuthNavigation = (): ReactElement => {
             />
             <NoAuthStack.Screen
                 name={NavigationRoutes.SIGN_UP}
-                component={SignInScreen}
+                component={SignUpScreen}
                 options={{
-                    gestureEnabled: false,
+                    headerStyle: {
+                        backgroundColor: COLORS.BACKGROUND,
+                    },
+                    headerTitleStyle: {
+                        color: COLORS.WHITE,
+                    },
                 }}
             />
         </NoAuthStack.Navigator>

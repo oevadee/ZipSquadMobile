@@ -37,5 +37,12 @@
         "forgot-password": "Forgot password?",
         "remember-me": "Remember Me",
         "email-or-password-incorrect": "The email or password you entered is incorrect"
+    },
+    "sign-up": {
+        "sign-in-text": "Sign in",
+        "sign-up-text": "Sign up",
+        "already-a-member": "Already a member?",
+        "remember-me": "Remember Me",
+        "email-or-password-incorrect": "The email or password you entered is incorrect"
     }
 }
