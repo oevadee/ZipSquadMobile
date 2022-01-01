@@ -2,13 +2,13 @@ import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React, {useState} from 'react';
 import {StyleSheet, TouchableOpacity, View, ViewStyle} from 'react-native';
-import {Description} from '../../../components/description';
-import {SafeAreaNoAuth} from '../../../components/safe-area-no-auth';
-import {StyledButton} from '../../../components/styled-button';
-import {StyledText} from '../../../components/styled-text';
-import {Title} from '../../../components/title';
-import {NavigationRoutes} from '../../../navigation/routes';
-import {COLORS} from '../../../styles/colors';
+import {Description} from 'components/description';
+import {SafeAreaNoAuth} from 'components/safe-area-no-auth';
+import {StyledButton} from 'components/styled-button';
+import {StyledText} from 'components/styled-text';
+import {Title} from 'components/title';
+import {NavigationRoutes} from 'navigation/routes';
+import {COLORS} from 'styles/colors';
 
 export const SignInScreen = () => {
   const [isUserBack, setIsUserBack] = useState(false);

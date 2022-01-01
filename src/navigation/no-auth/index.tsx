@@ -1,11 +1,11 @@
 import React, {ReactElement} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import {NavigationRoutes} from '../../navigation/routes';
+import {NavigationRoutes} from 'navigation/routes';
 
-import {FirstScreen} from '../../screens/no-auth-screens/first-screen';
-import {SignInScreen} from '../../screens/no-auth-screens/sign-in';
-import {COLORS} from '../../styles/colors';
+import {FirstScreen} from 'screens/no-auth-screens/first-screen';
+import {SignInScreen} from 'screens/no-auth-screens/sign-in';
+import {COLORS} from 'styles/colors';
 
 const NoAuthStack = createNativeStackNavigator<any>();
 

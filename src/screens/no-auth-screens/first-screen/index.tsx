@@ -1,11 +1,11 @@
 import React, {ReactElement} from 'react';
 import {ViewStyle, StyleSheet, Dimensions, Text, Button} from 'react-native';
 import {useNavigation} from '@react-navigation/core';
-import {NavigationRoutes} from '../../../navigation/routes';
+import {NavigationRoutes} from 'navigation/routes';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {COLORS} from '../../../styles/colors';
-import {SafeAreaNoAuth} from '../../../components/safe-area-no-auth';
-import {StyledButton} from '../../../components/styled-button';
+import {COLORS} from 'styles/colors';
+import {SafeAreaNoAuth} from 'components/safe-area-no-auth';
+import {StyledButton} from 'components/styled-button';
 
 export const FirstScreen = (): ReactElement => {
   const navigation = useNavigation<StackNavigationProp<any>>();

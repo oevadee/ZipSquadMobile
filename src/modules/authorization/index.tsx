@@ -1,9 +1,9 @@
 import React, {ReactElement, useState} from 'react';
-import {NoAuthNavigation} from '../../navigation/no-auth';
+import {NoAuthNavigation} from 'navigation/no-auth';
 import {SafeAreaView, StyleSheet} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {NavigationRoutes} from '../../navigation/routes';
-import {COLORS} from '../../styles/colors';
+import {NavigationRoutes} from 'navigation/routes';
+import {COLORS} from 'styles/colors';
 
 const Stack = createNativeStackNavigator<any>();
 

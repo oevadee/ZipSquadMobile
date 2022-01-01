@@ -1,6 +1,6 @@
 import React, {ReactElement, ReactNode} from 'react';
 import {StyleSheet, Text, TextProps, TextStyle} from 'react-native';
-import {COLORS} from '../../styles/colors';
+import {COLORS} from 'styles/colors';
 
 interface IProps extends TextProps {
   children: ReactNode;

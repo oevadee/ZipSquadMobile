@@ -12,7 +12,7 @@ import {
   ImageRequireSource,
   Dimensions,
 } from 'react-native';
-import {COLORS} from '../../styles/colors';
+import {COLORS} from 'styles/colors';
 
 type IProps = {
   children?: ReactNode;

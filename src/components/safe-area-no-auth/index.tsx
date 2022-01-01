@@ -9,8 +9,8 @@ import {
   View,
   ImageStyle,
 } from 'react-native';
-import {COLORS} from '../../styles/colors';
-import {KeyboardAware} from '../../modules/keyboard-aware';
+import {COLORS} from 'styles/colors';
+import {KeyboardAware} from 'modules/keyboard-aware';
 
 interface IProps {
   children: ReactNode;
