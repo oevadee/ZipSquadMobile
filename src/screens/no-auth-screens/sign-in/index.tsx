@@ -15,8 +15,9 @@ import { Title } from 'components/title';
 import { COLORS } from 'styles/colors';
 
 import { SignInForm } from 'screens/no-auth-screens/sign-in/components/form';
-import { SignInInputName } from 'screens/no-auth-screens/sign-in/types';
+import { SignInFormData, SignInInputName } from 'screens/no-auth-screens/sign-in/types';
 import { signInSchema } from './validation';
+import { Spinner } from 'components/spinner';
 
 const INPUT_NAME = {
     email: 'email',
@@ -49,6 +50,7 @@ export const SignInScreen = () => {
     const isWelcomeBack = isUserBack;
     return (
         <SafeAreaNoAuth automaticallyAdjustContentInsets={false}>
+            <Spinner isLoading={isWaitingForResponse} />
             <View style={styles.logoWrapper}>
                 <Title style={styles.signIn}>{t('sign-in.sign-in-text')}</Title>
                 <Description>{isWelcomeBack ? t('sign-in.welcome-back') : ''}</Description>

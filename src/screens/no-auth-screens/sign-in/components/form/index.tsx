@@ -9,9 +9,8 @@ import { PasswordInput } from 'components/password-input';
 // import { useNavigation } from '@react-navigation/native';
 // import { NavigationRoutes } from 'navigation/routes';
 import { useTranslation } from 'react-i18next';
-import { Control, Controller, FieldErrors } from 'react-hook-form';
+import { Controller, FieldErrors } from 'react-hook-form';
 import { SignInInputName } from 'screens/no-auth-screens/sign-in/types';
-import { ChangeTextEvent, TextValue } from 'types/form';
 
 interface IProps {
     checked: boolean;
@@ -101,7 +100,7 @@ const styles = StyleSheet.create<Style>({
         marginBottom: 20,
     },
     forgot: {
-        color: COLORS.PRIMARY_TWO,
+        color: COLORS.SECONDARY,
     },
     wrapper: {
         flexDirection: 'row',
