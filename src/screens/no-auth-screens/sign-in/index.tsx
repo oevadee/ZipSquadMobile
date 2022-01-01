@@ -1,7 +1,14 @@
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React, {useState} from 'react';
-import {StyleSheet, TouchableOpacity, View, ViewStyle} from 'react-native';
+import {
+  ImageStyle,
+  StyleSheet,
+  TextStyle,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from 'react-native';
 import {Description} from 'components/description';
 import {SafeAreaNoAuth} from 'containers/safe-area-no-auth';
 import {StyledButton} from 'components/styled-button';
@@ -9,8 +16,10 @@ import {StyledText} from 'components/styled-text';
 import {Title} from 'components/title';
 import {NavigationRoutes} from 'navigation/routes';
 import {COLORS} from 'styles/colors';
+import {useTranslation} from 'react-i18next';
 
 export const SignInScreen = () => {
+  const {t} = useTranslation();
   const [isUserBack, setIsUserBack] = useState(false);
 
   const navigation = useNavigation<StackNavigationProp<any>>();
@@ -19,28 +28,41 @@ export const SignInScreen = () => {
   return (
     <SafeAreaNoAuth automaticallyAdjustContentInsets={false}>
       <View style={styles.logoWrapper}>
-        <Title style={styles.signIn}>Sign In</Title>
-        <Description>{isWelcomeBack ? 'Hi, Welcome back!' : ''}</Description>
+        <Title style={styles.signIn}>{t('signInScreen.signIn')}</Title>
+        <Description>
+          {isWelcomeBack ? t('signInScreen.welcomeBack') : ''}
+        </Description>
       </View>
-      <View>
-        <StyledText>Form</StyledText>
-      </View>
+      {/* <SignInForm
+        setChecked={handleChecked}
+        checked={checked}
+        inputName={INPUT_NAME}
+        control={control}
+        setValue={onChange}
+        errors={errors}
+      /> */}
       <View style={styles.notMember}>
-        <StyledText>You are not a member, sign up</StyledText>
+        <StyledText>{t('signInScreen.notMember')}</StyledText>
         <TouchableOpacity
-          onPress={(): void =>
-            navigation.navigate({
-              name: NavigationRoutes.SIGN_UP,
-              key: NavigationRoutes.SIGN_UP,
-            })
-          }>
-          <StyledText style={styles.text}> Register here</StyledText>
+          onPress={(): void => navigation.navigate(NavigationRoutes.SIGN_UP)}>
+          <StyledText style={styles.text}>
+            {' '}
+            {t('signInScreen.registerHere')}
+          </StyledText>
         </TouchableOpacity>
       </View>
       <View style={styles.signInBottom}>
+        {/* <Error isError={Boolean(showErrorMessage) && formState.isSubmitted}>
+          {showErrorMessage}
+        </Error> */}
         <View style={styles.wrapper}>
-          <StyledButton onPress={() => console.log('submit')}>
-            Sign In
+          <StyledButton
+          // icon
+          // source={require('assets/signin.png')}
+          // disabled={!isFieldsComplete}
+          // onPress={handleSubmit(onSubmit)}
+          >
+            {t('signInScreen.signIn')}
           </StyledButton>
         </View>
       </View>
@@ -49,13 +71,13 @@ export const SignInScreen = () => {
 };
 
 interface Style {
-  logo: ViewStyle;
-  logoWrapper: ViewStyle;
-  notMember: ViewStyle;
-  signIn: ViewStyle;
+  logo: ImageStyle;
+  signIn: TextStyle;
   signInBottom: ViewStyle;
   wrapper: ViewStyle;
-  text: ViewStyle;
+  logoWrapper: ViewStyle;
+  notMember: ViewStyle;
+  text: TextStyle;
 }
 
 const styles = StyleSheet.create<Style>({
@@ -92,6 +114,6 @@ const styles = StyleSheet.create<Style>({
     justifyContent: 'space-between',
   },
   text: {
-    color: COLORS.WHITE,
+    color: COLORS.PRIMARY,
   },
 });

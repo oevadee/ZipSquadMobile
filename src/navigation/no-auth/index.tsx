@@ -11,7 +11,9 @@ const NoAuthStack = createNativeStackNavigator<any>();
 
 export const NoAuthNavigation = (): ReactElement => {
   return (
-    <NoAuthStack.Navigator initialRouteName={NavigationRoutes.FIRST_SCREEN}>
+    <NoAuthStack.Navigator
+      initialRouteName={NavigationRoutes.FIRST_SCREEN}
+      screenOptions={{gestureEnabled: false}}>
       <NoAuthStack.Screen
         name={NavigationRoutes.FIRST_SCREEN}
         component={FirstScreen}
@@ -23,7 +25,6 @@ export const NoAuthNavigation = (): ReactElement => {
         name={NavigationRoutes.SIGN_IN}
         component={SignInScreen}
         options={{
-          gestureEnabled: false,
           headerStyle: {
             backgroundColor: COLORS.BACKGROUND,
           },
@@ -36,7 +37,7 @@ export const NoAuthNavigation = (): ReactElement => {
         name={NavigationRoutes.SIGN_UP}
         component={SignInScreen}
         options={{
-          headerShown: false,
+          gestureEnabled: false,
         }}
       />
     </NoAuthStack.Navigator>

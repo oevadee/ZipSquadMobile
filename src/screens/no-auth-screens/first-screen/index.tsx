@@ -1,13 +1,16 @@
 import React, {ReactElement} from 'react';
-import {ViewStyle, StyleSheet, Dimensions, Text, Button} from 'react-native';
+import {ViewStyle, StyleSheet, Dimensions} from 'react-native';
 import {useNavigation} from '@react-navigation/core';
 import {NavigationRoutes} from 'navigation/routes';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {useTranslation} from 'react-i18next';
+
 import {COLORS} from 'styles/colors';
 import {SafeAreaNoAuth} from 'containers/safe-area-no-auth';
 import {StyledButton} from 'components/styled-button';
 
 export const FirstScreen = (): ReactElement => {
+  const {t} = useTranslation();
   const navigation = useNavigation<StackNavigationProp<any>>();
 
   return (
@@ -20,7 +23,7 @@ export const FirstScreen = (): ReactElement => {
             key: NavigationRoutes.SIGN_IN,
           })
         }>
-        Sign In
+        {t('sign-in.sign-in-text')}
       </StyledButton>
       <StyledButton
         styleButton={[styles.button, styles.signInButton]}
@@ -30,7 +33,7 @@ export const FirstScreen = (): ReactElement => {
             key: NavigationRoutes.SIGN_UP,
           })
         }>
-        Sign Up
+        {t('sign-in.sign-up-text')}
       </StyledButton>
     </SafeAreaNoAuth>
   );

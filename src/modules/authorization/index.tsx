@@ -1,6 +1,6 @@
 import React, {ReactElement, useState} from 'react';
 import {NoAuthNavigation} from 'navigation/no-auth';
-import {SafeAreaView, StyleSheet} from 'react-native';
+import {SafeAreaView, StyleSheet, ViewStyle} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationRoutes} from 'navigation/routes';
 import {COLORS} from 'styles/colors';
@@ -12,7 +12,8 @@ export const Authorization = (): ReactElement => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{headerShown: false, gestureEnabled: false}}>
         {isLogin ? (
           <></>
         ) : (
@@ -23,10 +24,6 @@ export const Authorization = (): ReactElement => {
           <Stack.Screen
             name={NavigationRoutes.NO_AUTH}
             component={NoAuthNavigation}
-            options={{
-              headerShown: false,
-              gestureEnabled: false,
-            }}
           />
         )}
       </Stack.Navigator>
@@ -34,9 +31,13 @@ export const Authorization = (): ReactElement => {
   );
 };
 
-const styles = StyleSheet.create<any>({
+interface Style {
+  container: ViewStyle;
+}
+
+const styles = StyleSheet.create<Style>({
   container: {
     flex: 1,
-    background: COLORS.BACKGROUND,
+    backgroundColor: COLORS.BACKGROUND,
   },
 });

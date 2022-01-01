@@ -1,0 +1,9 @@
+{
+  "sign-in": {
+    "sign-in-text": "Sign in",
+    "sign-up-text": "Sign up",
+    "welcome-back": "Hi again",
+    "not-member": "You are not a member",
+    "register-here": "Register here"
+  }
+}
