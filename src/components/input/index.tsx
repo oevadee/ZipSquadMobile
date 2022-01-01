@@ -1,14 +1,11 @@
 import React, { ReactElement, useState } from 'react';
 import {
-    Image,
     ImageRequireSource,
-    ImageStyle,
     KeyboardTypeOptions,
     StyleProp,
     StyleSheet,
     TextInput,
     TextInputProps,
-    TouchableOpacity,
     View,
     ViewStyle,
 } from 'react-native';
@@ -20,18 +17,14 @@ interface RefObject<T> {
 }
 
 type IProps = {
-    icon?: boolean;
     focusOff?: boolean;
     styleInput?: StyleProp<ViewStyle>;
     error?: FieldError | boolean;
     source?: ImageRequireSource;
-    styleIcon?: StyleProp<ImageStyle>;
-    styleIconWrapper?: StyleProp<ViewStyle>;
     containerStyle?: ViewStyle;
     inputFocused?: ViewStyle;
     onInputFocus?: () => void;
     onInputBlur?: () => void;
-    onIconPress?: () => void;
     inputRef?: RefObject<any> | any;
     type?: 'email';
 } & TextInputProps;
@@ -39,11 +32,7 @@ type IProps = {
 export const Input = ({
     styleInput,
     error,
-    styleIcon,
-    styleIconWrapper,
     source = 0,
-    icon = false,
-    onIconPress,
     focusOff,
     inputRef,
     containerStyle,
@@ -90,14 +79,6 @@ export const Input = ({
                 ref={inputRef}
                 {...emailType}
             />
-            {icon ? (
-                <TouchableOpacity
-                    style={[styles.styleIconWrapper, styleIconWrapper]}
-                    onPress={onIconPress}
-                >
-                    <Image source={source} style={[styles.image, styleIcon]} />
-                </TouchableOpacity>
-            ) : null}
         </View>
     );
 };
@@ -106,8 +87,6 @@ interface Style {
     input: ViewStyle;
     inputFocused: ViewStyle;
     container: ViewStyle;
-    image: ImageStyle;
-    styleIconWrapper: ViewStyle;
     readOnly: ViewStyle;
 }
 
@@ -128,13 +107,6 @@ const styles = StyleSheet.create<Style>({
     },
     inputFocused: {
         borderColor: COLORS.PRIMARY,
-    },
-    styleIconWrapper: {
-        position: 'absolute',
-    },
-    image: {
-        width: 15,
-        height: 15,
     },
     readOnly: {
         color: COLORS.GRAY,

@@ -11,6 +11,7 @@
         "format": "prettier --write \"**/*.{js,jsx,ts,tsx}\""
     },
     "dependencies": {
+        "@hookform/resolvers": "^2.8.5",
         "@react-navigation/native": "^6.0.6",
         "@react-navigation/native-stack": "^6.2.5",
         "@react-navigation/stack": "^6.0.11",
@@ -22,7 +23,8 @@
         "react-native-check-box": "^2.1.7",
         "react-native-keyboard-aware-scrollview": "^2.1.0",
         "react-native-safe-area-context": "^3.3.2",
-        "react-native-screens": "^3.10.1"
+        "react-native-screens": "^3.10.1",
+        "yup": "^0.32.11"
     },
     "devDependencies": {
         "@babel/core": "^7.12.9",

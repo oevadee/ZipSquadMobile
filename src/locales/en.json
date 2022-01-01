@@ -1,9 +1,41 @@
 {
-  "sign-in": {
-    "sign-in-text": "Sign in",
-    "sign-up-text": "Sign up",
-    "welcome-back": "Hi again",
-    "not-member": "You are not a member",
-    "register-here": "Register here"
-  }
+    "common": {
+        "email-address": "Email Address",
+        "password": "Password",
+        "back": "Back",
+        "send-email": "Send Email",
+        "repeat-password": "Repeat Password",
+        "add": "Add",
+        "edit": "Edit",
+        "first-name": "First Name",
+        "last-name": "Last Name",
+        "cancel": "Cancel",
+        "ok": "OK",
+        "next": "Next",
+        "save": "Save",
+        "duplicate": "Duplicate",
+        "yes": "Yes",
+        "no": "No",
+        "email": "Email",
+        "accept": "Accept",
+        "reject": "Reject",
+        "remove": "Remove",
+        "success": "Success!",
+        "required": "required",
+        "message": "Message",
+        "pending": "Pending",
+        "country": "Country",
+        "canceled": "Canceled",
+        "optional": "optional"
+    },
+    "sign-in": {
+        "sign-in-text": "Sign in",
+        "sign-up-text": "Sign up",
+        "welcome-back": "Hi again",
+        "not-member": "You are not a member",
+        "register-here": "Register here",
+        "forgot-password": "Forgot password?",
+        "remember-me": "Remember Me",
+        "email-or-password-incorrect": "The email or password you entered is incorrect"
+    }
 }

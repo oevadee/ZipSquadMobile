@@ -1,13 +1,13 @@
 import React, { ReactElement } from 'react';
 import { StyleSheet, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native';
-import { Label } from 'components/Label';
+import { Label } from 'components/label';
 import { Input } from 'components/input';
 import { StyledText } from 'components/styled-text';
 import { COLORS } from 'styles/colors';
 import { Checkbox } from 'components/check-box';
-import { PasswordInput } from 'components/PasswordInput';
-import { useNavigation } from '@react-navigation/native';
-import { NavigationRoutes } from 'navigation/routes';
+import { PasswordInput } from 'components/password-input';
+// import { useNavigation } from '@react-navigation/native';
+// import { NavigationRoutes } from 'navigation/routes';
 import { useTranslation } from 'react-i18next';
 import { Control, Controller, FieldErrors } from 'react-hook-form';
 import { SignInInputName } from 'screens/no-auth-screens/sign-in/types';
@@ -16,53 +16,66 @@ import { ChangeTextEvent, TextValue } from 'types/form';
 interface IProps {
     checked: boolean;
     setChecked: () => void;
-    setValue: (args: ChangeTextEvent) => TextValue;
-    control: Control;
+    control: any;
     inputName: SignInInputName;
     errors: FieldErrors<SignInInputName>;
 }
 
-export const SignInForm = (props: IProps): ReactElement => {
-    const { checked, setChecked, inputName, control, setValue, errors } = props;
-    const navigation = useNavigation();
+export const SignInForm = ({
+    checked,
+    setChecked,
+    inputName,
+    control,
+    errors,
+}: IProps): ReactElement => {
+    // const navigation = useNavigation();
     const { t } = useTranslation();
 
-    const navigateToResetPassword = (): void =>
-        navigation.navigate(NavigationRoutes.RESET_PASSWORD);
+    // const navigateToResetPassword = (): void =>
+    //     navigation.navigate(NavigationRoutes.RESET_PASSWORD);
 
     return (
         <View style={styles.container}>
             <View style={styles.inputWrapper}>
-                <Label>{t('common.emailAddress')}</Label>
+                <Label>{t('common.email-address')}</Label>
                 <Controller
-                    as={<Input error={errors.email} />}
-                    name={inputName.email}
                     control={control}
-                    onChange={setValue}
-                    type="email"
+                    name={inputName.email}
+                    render={({ field: { onChange, onBlur, value } }) => (
+                        <Input
+                            onChangeText={(value) => onChange(value)}
+                            value={value}
+                            onBlur={onBlur}
+                            error={errors.email}
+                        />
+                    )}
                 />
             </View>
             <View style={styles.inputWrapper}>
                 <Label>{t('common.password')}</Label>
                 <Controller
-                    as={<PasswordInput error={errors.password} />}
-                    name={inputName.password}
                     control={control}
-                    onChange={setValue}
+                    name={inputName.password}
+                    render={({ field: { onChange, onBlur, value } }) => (
+                        <Input
+                            onChangeText={(value) => onChange(value)}
+                            value={value}
+                            onBlur={onBlur}
+                            error={errors.password}
+                        />
+                    )}
                 />
             </View>
             <View style={styles.wrapper}>
                 <View style={styles.wrapperRemember}>
                     <Checkbox checked={checked} onChange={setChecked} />
-                    <StyledText style={styles.rememberMe}>
-                        {t('signInScreen.rememberMe')}
-                    </StyledText>
+                    <StyledText style={styles.rememberMe}>{t('sign-in.remember-me')}</StyledText>
                 </View>
-                <TouchableOpacity onPress={navigateToResetPassword}>
+                {/* <TouchableOpacity onPress={navigateToResetPassword}>
                     <StyledText style={styles.forgot}>
                         {t('signInScreen.forgotPassword')}
                     </StyledText>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
             </View>
         </View>
     );
