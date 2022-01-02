@@ -7,6 +7,7 @@ import { FirstScreen } from 'screens/no-auth-screens/first-screen';
 import { SignInScreen } from 'screens/no-auth-screens/sign-in';
 import { COLORS } from 'styles/colors';
 import { SignUpScreen } from 'screens/no-auth-screens/sign-up';
+import { ResetPasswordScreen } from 'screens/no-auth-screens/reset-password';
 
 const NoAuthStack = createNativeStackNavigator<any>();
 
@@ -35,6 +36,18 @@ export const NoAuthNavigation = (): ReactElement => {
             <NoAuthStack.Screen
                 name={NavigationRoutes.SIGN_UP}
                 component={SignUpScreen}
+                options={{
+                    headerStyle: {
+                        backgroundColor: COLORS.BACKGROUND,
+                    },
+                    headerTitleStyle: {
+                        color: COLORS.WHITE,
+                    },
+                }}
+            />
+            <NoAuthStack.Screen
+                name={NavigationRoutes.RESET_PASSWORD}
+                component={ResetPasswordScreen}
                 options={{
                     headerStyle: {
                         backgroundColor: COLORS.BACKGROUND,

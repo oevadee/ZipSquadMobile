@@ -1,16 +1,16 @@
 import React, { ReactElement } from 'react';
-import { StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
+import { StyleSheet, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native';
 import { Label } from 'components/label';
 import { Input } from 'components/input';
 import { StyledText } from 'components/styled-text';
 import { COLORS } from 'styles/colors';
 import { Checkbox } from 'components/check-box';
 import { PasswordInput } from 'components/password-input';
-// import { useNavigation } from '@react-navigation/native';
-// import { NavigationRoutes } from 'navigation/routes';
 import { useTranslation } from 'react-i18next';
 import { Controller, FieldErrors } from 'react-hook-form';
 import { SignUpInputName } from 'screens/no-auth-screens/sign-up/types';
+import { NavigationRoutes } from 'navigation/routes';
+import { useNavigation } from '@react-navigation/native';
 
 interface IProps {
     checked: boolean;
@@ -27,11 +27,14 @@ export const SignUpForm = ({
     control,
     errors,
 }: IProps): ReactElement => {
-    // const navigation = useNavigation();
+    const navigation = useNavigation();
     const { t } = useTranslation();
 
-    // const navigateToResetPassword = (): void =>
-    //     navigation.navigate(NavigationRoutes.RESET_PASSWORD);
+    const navigateToResetPassword = (): void =>
+        navigation.navigate({
+            name: NavigationRoutes.RESET_PASSWORD,
+            key: NavigationRoutes.RESET_PASSWORD,
+        });
 
     return (
         <View style={styles.container}>
@@ -46,6 +49,7 @@ export const SignUpForm = ({
                             value={value}
                             onBlur={onBlur}
                             error={errors.email}
+                            type="email"
                         />
                     )}
                 />
@@ -85,11 +89,9 @@ export const SignUpForm = ({
                     <Checkbox checked={checked} onChange={setChecked} />
                     <StyledText style={styles.rememberMe}>{t('sign-up.remember-me')}</StyledText>
                 </View>
-                {/* <TouchableOpacity onPress={navigateToResetPassword}>
-                    <StyledText style={styles.forgot}>
-                        {t('signInScreen.forgotPassword')}
-                    </StyledText>
-                </TouchableOpacity> */}
+                <TouchableOpacity onPress={navigateToResetPassword}>
+                    <StyledText style={styles.forgot}>{t('sign-in.forgot-password')}</StyledText>
+                </TouchableOpacity>
             </View>
         </View>
     );

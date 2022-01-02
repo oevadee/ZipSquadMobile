@@ -5,6 +5,7 @@ export enum NavigationRoutes {
     AUTH = 'Auth',
     NO_AUTH = 'No Auth',
     FIRST_SCREEN = 'First Screen',
+    RESET_PASSWORD = 'Reset Password',
     // Auth
     DASHBOARD = 'Dashboard',
 }

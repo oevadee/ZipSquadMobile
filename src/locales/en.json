@@ -45,6 +45,9 @@
         "remember-me": "Remember Me",
         "email-or-password-incorrect": "The email or password you entered is incorrect"
     },
+    "reset-password": {
+        "reset-password": "Reset password"
+    },
     "validation": {
         "completeAll": "Please complete all required fields.",
         "required": "Field is required",
