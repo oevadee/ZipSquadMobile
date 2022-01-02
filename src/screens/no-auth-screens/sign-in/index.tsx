@@ -60,10 +60,15 @@ export const SignInScreen = () => {
         })();
     }, []);
 
+    useEffect(() => {
+        (async (): Promise<void> => {
+            await checkLogin(true);
+        })();
+    }, [loggedInLanding]);
+
     const storeRememberMe = async (): Promise<void> => {
         if (checked) {
             const email = getValues().email;
-            console.log(email);
             await AsyncStorage.setItem(StorageKeys.rememberMe, StorageValues.rememberMe);
             if (email) {
                 await AsyncStorage.setItem(StorageKeys.email, email);
@@ -95,6 +100,7 @@ export const SignInScreen = () => {
             }
             await checkLogin(true);
         } catch (_) {
+            // eslint-disable-next-line no-console
             console.log('error');
         } finally {
             setIsWaitingForResponse(false);
@@ -122,7 +128,8 @@ export const SignInScreen = () => {
             <View style={styles.notMember}>
                 <StyledText>{t('sign-in.not-member')}</StyledText>
                 <TouchableOpacity
-                    onPress={(): void => navigation.navigate(NavigationRoutes.SIGN_UP)}>
+                    onPress={(): void => navigation.navigate(NavigationRoutes.SIGN_UP)}
+                >
                     <StyledText style={styles.text}> {t('sign-in.register-here')}</StyledText>
                 </TouchableOpacity>
             </View>
@@ -135,7 +142,8 @@ export const SignInScreen = () => {
                         // icon
                         // source={require('assets/signin.png')}
                         disabled={!isFieldsComplete}
-                        onPress={handleSubmit(onSubmit)}>
+                        onPress={handleSubmit(onSubmit)}
+                    >
                         {t('sign-in.sign-in-text')}
                     </StyledButton>
                 </View>

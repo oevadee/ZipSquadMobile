@@ -43,7 +43,8 @@ export const StyledButton = ({
 }: IProps): ReactElement => (
     <TouchableOpacity
         onPress={!isBlocked ? onPress : (): void => {}}
-        style={[styles.button, styleButton, (disabled || isBlocked) && styles.buttonDisabled]}>
+        style={[styles.button, styleButton, (disabled || isBlocked) && styles.buttonDisabled]}
+    >
         {icon ? <ButtonIcon source={source} styleIcon={styleIcon} /> : null}
         <Text style={[styles.text, styleText]}>{children}</Text>
     </TouchableOpacity>

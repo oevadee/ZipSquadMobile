@@ -1,6 +1,5 @@
 import React, { ReactElement, useState } from 'react';
 import {
-    ImageRequireSource,
     KeyboardTypeOptions,
     StyleProp,
     StyleSheet,
@@ -20,7 +19,6 @@ type IProps = {
     focusOff?: boolean;
     styleInput?: StyleProp<ViewStyle>;
     error?: FieldError | boolean;
-    source?: ImageRequireSource;
     containerStyle?: ViewStyle;
     inputFocused?: ViewStyle;
     onInputFocus?: () => void;
@@ -32,7 +30,6 @@ type IProps = {
 export const Input = ({
     styleInput,
     error,
-    source = 0,
     focusOff,
     inputRef,
     containerStyle,

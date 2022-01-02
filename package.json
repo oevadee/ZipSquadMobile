@@ -8,7 +8,8 @@
         "start": "react-native start",
         "test": "jest",
         "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-        "format": "prettier --write \"**/*.{js,jsx,ts,tsx}\""
+        "format": "prettier --write \"**/*.{js,jsx,ts,tsx}\"",
+        "prepare": "husky install"
     },
     "dependencies": {
         "@hookform/resolvers": "^2.8.5",
@@ -30,15 +31,16 @@
     "devDependencies": {
         "@babel/core": "^7.12.9",
         "@babel/runtime": "^7.12.5",
-        "@react-native-community/eslint-config": "^2.0.0",
+        "@react-native-community/eslint-config": "^3.0.1",
         "@types/": "react-native-community/async-storage",
         "@types/jest": "^26.0.23",
         "@types/react-native": "^0.66.4",
         "@types/react-test-renderer": "^17.0.1",
-        "@typescript-eslint/eslint-plugin": "^5.7.0",
-        "@typescript-eslint/parser": "^5.7.0",
+        "@typescript-eslint/eslint-plugin": "^5.8.1",
+        "@typescript-eslint/parser": "^5.8.1",
         "babel-jest": "^26.6.3",
         "eslint": "^7.14.0",
+        "husky": "^7.0.4",
         "jest": "^26.6.3",
         "metro-react-native-babel-preset": "^0.66.2",
         "prettier": "^2.5.1",

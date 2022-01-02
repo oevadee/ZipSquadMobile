@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { StyleSheet, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native';
+import { StyleSheet, TextStyle, View, ViewStyle } from 'react-native';
 import { Label } from 'components/label';
 import { Input } from 'components/input';
 import { StyledText } from 'components/styled-text';

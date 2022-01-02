@@ -27,7 +27,8 @@ type IShowPassword = {
 const ShowPassword = ({ onPress, isFocus, error, isVisible }: IShowPassword): ReactElement => (
     <TouchableOpacity
         style={[styles.password, error && styles.focused, isFocus && styles.focused]}
-        onPress={onPress}>
+        onPress={onPress}
+    >
         {isVisible ? (
             <Image source={require('assets/eye-closed.png')} style={styles.icon} />
         ) : (

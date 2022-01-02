@@ -40,9 +40,17 @@ export const SignUpScreen = () => {
 
     const handleChecked = async (): Promise<void> => setChecked(!checked);
 
-    const onSubmit = ({ email, password }: SignUpFormData): void => {
-        console.log({ email, password });
+    const onSubmit = async ({ email, password }: SignUpFormData): void => {
         setIsWaitingForResponse(true);
+        try {
+            // eslint-disable-next-line no-console
+            console.log({ email, password });
+        } catch (_) {
+            // eslint-disable-next-line no-console
+            console.error('error');
+        } finally {
+            setIsWaitingForResponse(false);
+        }
     };
 
     return (
@@ -61,7 +69,8 @@ export const SignUpScreen = () => {
             <View style={styles.notMember}>
                 <StyledText>{t('sign-up.already-a-member')}</StyledText>
                 <TouchableOpacity
-                    onPress={(): void => navigation.navigate(NavigationRoutes.SIGN_IN)}>
+                    onPress={(): void => navigation.navigate(NavigationRoutes.SIGN_IN)}
+                >
                     <StyledText style={styles.text}> {t('sign-up.sign-in-text')}</StyledText>
                 </TouchableOpacity>
             </View>
@@ -74,7 +83,8 @@ export const SignUpScreen = () => {
                         // icon
                         // source={require('assets/signin.png')}
                         // disabled={!isFieldsComplete}
-                        onPress={handleSubmit(onSubmit)}>
+                        onPress={handleSubmit(onSubmit)}
+                    >
                         {t('sign-up.sign-up-text')}
                     </StyledButton>
                 </View>
