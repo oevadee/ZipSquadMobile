@@ -21,7 +21,7 @@ module.exports = {
             locales: path.resolve(__dirname, 'src/locales'),
             modules: path.resolve(__dirname, 'src/modules'),
             navigation: path.resolve(__dirname, 'src/navigation'),
-            providers: path.resolve(__dirname, 'src/providers'),
+            context: path.resolve(__dirname, 'src/context'),
             screens: path.resolve(__dirname, 'src/screens'),
             styles: path.resolve(__dirname, 'src/styles'),
             types: path.resolve(__dirname, 'src/types'),
