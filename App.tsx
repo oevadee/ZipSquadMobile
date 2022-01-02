@@ -15,15 +15,18 @@ import { NavigationContainer } from '@react-navigation/native';
 import { i18nInit } from 'locales/i18n';
 import { Authorization } from 'modules/authorization';
 import { COLORS } from 'styles/colors';
+import { AuthContextProvider } from 'context/auth-context';
 
 i18nInit();
 
 const App = () => (
-    <NavigationContainer>
-        <SafeAreaView style={styles.container}>
-            <Authorization />
-        </SafeAreaView>
-    </NavigationContainer>
+    <AuthContextProvider>
+        <NavigationContainer>
+            <SafeAreaView style={styles.container}>
+                <Authorization />
+            </SafeAreaView>
+        </NavigationContainer>
+    </AuthContextProvider>
 );
 
 const styles = StyleSheet.create({

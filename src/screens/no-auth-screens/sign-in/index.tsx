@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ImageStyle, StyleSheet, TextStyle, TouchableOpacity, View, ViewStyle } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { Description } from 'components/description';
 import { SafeAreaNoAuth } from 'containers/safe-area-no-auth';
@@ -13,11 +14,15 @@ import { StyledText } from 'components/styled-text';
 import { NavigationRoutes } from 'navigation/routes';
 import { Title } from 'components/title';
 import { COLORS } from 'styles/colors';
+import { StorageKeys, StorageValues } from 'constants/storageKeys';
 
 import { SignInForm } from 'screens/no-auth-screens/sign-in/components/form';
 import { SignInFormData, SignInInputName } from 'screens/no-auth-screens/sign-in/types';
 import { signInSchema } from './validation';
 import { Spinner } from 'components/spinner';
+
+import { testUser } from 'constants/test-user';
+import { useAuthContext } from 'context/auth-context';
 
 const INPUT_NAME = {
     email: 'email',
@@ -29,25 +34,81 @@ export const SignInScreen = () => {
     const [isUserBack, setIsUserBack] = useState(false);
     const [checked, setChecked] = useState<boolean>(false);
     const [isWaitingForResponse, setIsWaitingForResponse] = useState<boolean>(false);
-
+    const [loggedInLanding, setLoggedInLanding] = useState<boolean>(false);
+    const { setLogged } = useAuthContext();
+    const navigation = useNavigation<StackNavigationProp<any>>();
     const {
         handleSubmit,
         control,
         formState: { errors },
+        reset,
+        getValues,
     } = useForm<SignInInputName>({
         resolver: yupResolver(signInSchema(t, INPUT_NAME)),
-        mode: 'onChange',
     });
-    const navigation = useNavigation<StackNavigationProp<any>>();
 
-    const handleChecked = async (): Promise<void> => setChecked(!checked);
+    useEffect(() => {
+        (async (): Promise<void> => {
+            const email = await AsyncStorage.getItem(StorageKeys.email);
+            if (email) {
+                setIsUserBack(true);
+                reset({ email });
+            }
+        })();
+    }, []);
 
-    const onSubmit = ({ email, password }: SignInFormData): void => {
-        console.log({ email, password });
+    const storeRememberMe = async (): Promise<void> => {
+        if (checked) {
+            const email = getValues().email;
+            await AsyncStorage.setItem(StorageKeys.rememberMe, StorageValues.rememberMe);
+            if (email) {
+                await AsyncStorage.setItem(StorageKeys.email, email);
+            }
+        } else {
+            await AsyncStorage.setItem(StorageKeys.rememberMe, '');
+            await AsyncStorage.setItem(StorageKeys.email, '');
+        }
+    };
+
+    const checkLogin = async (authenticated: boolean): Promise<void> => {
+        if (authenticated) {
+            await storeRememberMe();
+
+            const isRegisteredWithoutFirstLogin = await AsyncStorage.getItem(
+                StorageKeys.firstLogin,
+            );
+
+            if (isRegisteredWithoutFirstLogin) {
+                setLogged(false);
+                navigation.navigate(NavigationRoutes.CREATE_ACCOUNT);
+            } else {
+                setLogged(true);
+            }
+            setLoggedInLanding(false);
+        } else {
+            setLoggedInLanding(false);
+            setLogged(false);
+        }
+    };
+
+    const handleChecked = (): void => setChecked(!checked);
+
+    const onSubmit = async ({ email, password }: SignInFormData) => {
         setIsWaitingForResponse(true);
+        try {
+            if (email !== testUser.email || password !== testUser.password) {
+                throw new Error('Invalid login data');
+            }
+            await checkLogin(true);
+        } catch (err) {
+            console.error(err);
+        } finally {
+            setIsWaitingForResponse(false);
+        }
     };
 
     const isWelcomeBack = isUserBack;
+
     return (
         <SafeAreaNoAuth automaticallyAdjustContentInsets={false}>
             <Spinner isLoading={isWaitingForResponse} />
