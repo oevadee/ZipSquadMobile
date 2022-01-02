@@ -20,7 +20,9 @@ import { SignInForm } from 'screens/no-auth-screens/sign-in/components/form';
 import { SignInFormData, SignInInputName } from 'screens/no-auth-screens/sign-in/types';
 import { signInSchema } from './validation';
 import { Spinner } from 'components/spinner';
+import { Error } from 'components/error';
 
+import { errorMessage } from 'utils/errorMessage';
 import { testUser } from 'constants/test-user';
 import { useAuthContext } from 'context/auth-context';
 
@@ -40,6 +42,7 @@ export const SignInScreen = () => {
     const {
         handleSubmit,
         control,
+        formState,
         formState: { errors },
         reset,
         getValues,
@@ -60,6 +63,7 @@ export const SignInScreen = () => {
     const storeRememberMe = async (): Promise<void> => {
         if (checked) {
             const email = getValues().email;
+            console.log(email);
             await AsyncStorage.setItem(StorageKeys.rememberMe, StorageValues.rememberMe);
             if (email) {
                 await AsyncStorage.setItem(StorageKeys.email, email);
@@ -73,17 +77,7 @@ export const SignInScreen = () => {
     const checkLogin = async (authenticated: boolean): Promise<void> => {
         if (authenticated) {
             await storeRememberMe();
-
-            const isRegisteredWithoutFirstLogin = await AsyncStorage.getItem(
-                StorageKeys.firstLogin,
-            );
-
-            if (isRegisteredWithoutFirstLogin) {
-                setLogged(false);
-                navigation.navigate(NavigationRoutes.CREATE_ACCOUNT);
-            } else {
-                setLogged(true);
-            }
+            setLogged(true);
             setLoggedInLanding(false);
         } else {
             setLoggedInLanding(false);
@@ -97,17 +91,19 @@ export const SignInScreen = () => {
         setIsWaitingForResponse(true);
         try {
             if (email !== testUser.email || password !== testUser.password) {
-                throw new Error('Invalid login data');
+                return;
             }
             await checkLogin(true);
-        } catch (err) {
-            console.error(err);
+        } catch (_) {
+            console.log('error');
         } finally {
             setIsWaitingForResponse(false);
         }
     };
 
     const isWelcomeBack = isUserBack;
+    const showErrorMessage = errorMessage({ formError: errors });
+    const isFieldsComplete = !formState.isSubmitted || formState.isValid;
 
     return (
         <SafeAreaNoAuth automaticallyAdjustContentInsets={false}>
@@ -131,14 +127,14 @@ export const SignInScreen = () => {
                 </TouchableOpacity>
             </View>
             <View style={styles.signInBottom}>
-                {/* <Error isError={Boolean(showErrorMessage) && formState.isSubmitted}>
-          {showErrorMessage}
-        </Error> */}
+                <Error isError={Boolean(showErrorMessage) && formState.isSubmitted}>
+                    {showErrorMessage}
+                </Error>
                 <View style={styles.wrapper}>
                     <StyledButton
                         // icon
                         // source={require('assets/signin.png')}
-                        // disabled={!isFieldsComplete}
+                        disabled={!isFieldsComplete}
                         onPress={handleSubmit(onSubmit)}>
                         {t('sign-in.sign-in-text')}
                     </StyledButton>

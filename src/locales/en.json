@@ -44,5 +44,24 @@
         "already-a-member": "Already a member?",
         "remember-me": "Remember Me",
         "email-or-password-incorrect": "The email or password you entered is incorrect"
+    },
+    "validation": {
+        "completeAll": "Please complete all required fields.",
+        "required": "Field is required",
+        "emailRequired": "Email is required",
+        "email": "Email is not valid",
+        "passwordMatch": "Passwords must match",
+        "atLeastOneLetterAndOneDigit": "At least one letter and one digit",
+        "minOneLetter": "At least one letter",
+        "passwordShouldBeAtLeast8CharactersLong": "Password must be at least 8 characters",
+        "noEmojis": "No emojis",
+        "shouldBeGreaterThanZero": "Should be greater than 0",
+        "shouldBeTotal100": "Should be total 100",
+        "year": "Year is required",
+        "isNumberWithOneDecimalPlaceAndZeroIsNotFirst": "Zero cannot be the first character and there can be only one digit after the decimal point",
+        "yourNewPasswordMustBeDifferent": "Your new password must be different than your old password. Please change password and try again.",
+        "nameIsRequired": "Name is required",
+        "password": "Password must be at least 8 chars, contain at least one letter and at least one digit",
+        "nameRequired": "Name is required."
     }
 }

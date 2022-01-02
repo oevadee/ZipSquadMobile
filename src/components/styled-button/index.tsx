@@ -79,6 +79,6 @@ const styles = StyleSheet.create<Style>({
         marginRight: 10,
     },
     buttonDisabled: {
-        backgroundColor: '#gray',
+        backgroundColor: COLORS.GRAY,
     },
 });
